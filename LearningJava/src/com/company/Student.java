@@ -29,13 +29,21 @@ public class Student extends Persoana {
     }
 
     public int compareTo(Student student) {
-        if( this.getNume().compareTo(student.getNume()) < 0) {
-
+        if( this.getNume().compareTo(student.getNume()) < 0)
+            return -1;
+        else if ( this.getNume().compareTo(student.getNume()) == 0) {
+            if (this.getPrenume().compareTo(student.getPrenume()) < 0)
+                return -1;
+            else if (this.getPrenume().compareTo(student.getPrenume()) == 0) {
+                return Integer.compare(this.anStudiu, student.anStudiu);
+            } else return 1;
         }
+        else return 1;
     }
 
     public Student() {
-
+        this.anStudiu = 0;
+        this.numeFacultate = "";
     }
 
     public Student(String nume, String prenume, int varsta, int anStudiu, String numeFacultate) {

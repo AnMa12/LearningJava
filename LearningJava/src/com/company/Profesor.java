@@ -14,23 +14,23 @@ public class Profesor extends Persoana {
                 '}';
     }
 
-    /*public int compareTo(Profesor profesor) {
-        if (this.getNume() < profesor.getNume())
+    public int compareTo(Profesor profesor) {
+        if( this.getNume().compareTo(profesor.getNume()) < 0)
             return -1;
-        else if (this.getNume() == profesor.getNume()) {
-            if(this.getTitlu() < profesor.getTitlu())
+        else if (this.getNume().compareTo(profesor.getNume()) == 0){
+            if(this.getTitlu().compareTo(profesor.getTitlu()) < 0)
                 return -1;
-            else if(this.getTitlu() == profesor.getTitlu()) {
-                if(this.getVechime() < profesor.getVechime())
+            else if(this.getTitlu().compareTo(profesor.getTitlu()) == 0) {
+                if(this.vechime < profesor.vechime)
                     return -1;
-                else if(this.getVechime() < profesor.getVechime())
+                else if(this.vechime == profesor.vechime)
                     return 0;
                 else return 1;
             }
             else return 1;
         }
         else return 1;
-    }*/
+    }
 
     public void setTitlu(Titlu titlu) {
         this.titlu = titlu;
@@ -57,6 +57,8 @@ public class Profesor extends Persoana {
     }
 
     public Profesor() {
+        this.vechime = 0;
+        this.catedra = "";
 
     }
 
