@@ -11,12 +11,17 @@ public class Persoana {
     private String nume;
     private String prenume;
     private int varsta;
+    private String echipa;
 
     public Persoana() {
+        this.nume = "";
+        this.prenume = "";
+        this.varsta = 0;
+        this.echipa = "";
     }
 
     public static void main(String[] args) throws IOException {
-        Scanner scan = new Scanner(new File("E:\\GitHub\\LearningJava\\src\\com\\company\\citire_date"));
+        Scanner scan = new Scanner(new File("E:\\GitHub\\LearningJava\\LearningJava\\src\\com\\company\\citire_date"));
 
         int nrStud = scan.nextInt();
         int nrProf = scan.nextInt();
@@ -58,7 +63,7 @@ public class Persoana {
         }
 
         //afisare in fisier
-        File file = new File("E:\\GitHub\\LearningJava\\src\\com\\company\\afisare");
+        File file = new File("E:\\GitHub\\LearningJava\\LearningJava\\src\\com\\company\\afisare");
         FileWriter writer = new FileWriter(file);
         for(int i = 0; i < nrStud; i++) {
             writer.write(ArrayStudenti[i].toString() + "\n");
@@ -74,7 +79,6 @@ public class Persoana {
         persoane.add(ArrayStudenti);
         persoane.add(ArrayProfesori);
         System.out.println(persoane.toString());
-
     }
 
     public boolean equals (Persoana p1, Persoana p2) {
