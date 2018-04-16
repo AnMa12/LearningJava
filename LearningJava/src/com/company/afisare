@@ -1,0 +1,7 @@
+Student{anStudiu=1, numeFacultate='informatica'}
+Student{anStudiu=2, numeFacultate='informatica'}
+Student{anStudiu=1, numeFacultate='matematica'}
+Student{anStudiu=2, numeFacultate='informatica'}
+Profesor{titlu=Conferentiar, vechime=10, catedra='informatica'}
+Profesor{titlu=Conferentiar, vechime=15, catedra='informatica'}
+Profesor{titlu=Profesor, vechime=25, catedra='matematica'}
