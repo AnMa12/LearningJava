@@ -5,6 +5,20 @@ public class Profesor extends Persoana implements Echipa{
     int vechime;
     String catedra;
 
+    public Profesor() {
+        super("", "", 0, "");
+        // ??? CUM INITIALIZEZ TITLU CU ""
+        this.vechime = 0;
+        this.catedra = "";
+    }
+
+    public Profesor(String nume, String prenume, int varsta, String echipa, Titlu titlu, int vechime, String catedra) {
+        super(nume, prenume, varsta, echipa);
+        this.titlu = titlu;
+        this.vechime = vechime;
+        this.catedra = catedra;
+    }
+
     @Override
     public void faceEchipa(Profesor p2) {
         if(this.getCatedra().equals(p2.getCatedra())) {
@@ -26,15 +40,6 @@ public class Profesor extends Persoana implements Echipa{
                 this.getPrenume() + " preda materia " + this.getEchipa());
     }
 
-    @Override
-    public String toString() {
-        return "Profesor{" +
-                "titlu=" + titlu +
-                ", vechime=" + vechime +
-                ", catedra='" + catedra + '\'' +
-                '}';
-    }
-
     public int compareTo(Profesor profesor) {
         if( this.getNume().compareTo(profesor.getNume()) < 0)
             return -1;
@@ -51,6 +56,15 @@ public class Profesor extends Persoana implements Echipa{
             else return 1;
         }
         else return 1;
+    }
+
+    @Override
+    public String toString() {
+        return "Profesor: " + this.getNume() + " " + this.getPrenume() +
+                    ", varsta: " + this.getVarsta() +
+                    ", titlu:" + titlu +
+                    ", vechime: " + vechime +
+                    ", catedra: " + catedra;
     }
 
     public void setTitlu(Titlu titlu) {
@@ -75,18 +89,5 @@ public class Profesor extends Persoana implements Echipa{
 
     public String getCatedra() {
         return catedra;
-    }
-
-    public Profesor() {
-        this.vechime = 0;
-        this.catedra = "";
-
-    }
-
-    public Profesor(String nume, String prenume, int varsta, Titlu titlu, int vechime, String catedra) {
-        super(nume, prenume, varsta);
-        this.titlu = titlu;
-        this.vechime = vechime;
-        this.catedra = catedra;
     }
 }

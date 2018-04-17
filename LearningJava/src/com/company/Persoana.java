@@ -20,6 +20,13 @@ public class Persoana implements Echipa {
         this.echipa = "";
     }
 
+    public Persoana(String nume, String prenume, int varsta, String echipa) {
+        this.nume = nume;
+        this.prenume = prenume;
+        this.varsta = varsta;
+        this.echipa = echipa;
+    }
+
     public static void main(String[] args) throws IOException {
         Scanner scan = new Scanner(new File("E:\\GitHub\\LearningJava\\LearningJava\\src\\com\\company\\citire_date"));
 
@@ -75,12 +82,15 @@ public class Persoana implements Echipa {
             writer.flush();
         }
 
+        //creare lista de persoane
         ArrayList<Persoana[]> persoane = new ArrayList<Persoana[]>();
         persoane.add(ArrayStudenti);
         persoane.add(ArrayProfesori);
+        //!!!PROBLEMA LA TO STRING
         System.out.println(persoane.toString());
     }
 
+    // --- Suprascriere Interfata ---
     @Override
     public void faceEchipa() {
         System.out.println("O persona nu poate face echipa cu alta persoana");
@@ -106,12 +116,16 @@ public class Persoana implements Echipa {
                p1.prenume.equals(p2.prenume) &&
                p1.varsta == p2.varsta;
     }
+    // --- Suprascriere Interfata FIN ---
 
+    // --- Suprascriere compareTo ---
     public int compareTo(Persoana persoana) {
         if (nume.equals(persoana.nume))
             return 1;
         return 0;
+        //CUM FOLOSESC ASTA PENTRU CAND COMPAR PROF CU STUDENT???
     }
+    // --- Suprascriere compareTo FIN ---
 
     @Override
     public String toString() {
@@ -122,6 +136,7 @@ public class Persoana implements Echipa {
                 '}';
     }
 
+    // --- Gettere si Settere ---
     public void setNume(String nume) {
         this.nume = nume;
     }
@@ -146,9 +161,5 @@ public class Persoana implements Echipa {
         return varsta;
     }
 
-    public Persoana(String nume, String prenume, int varsta) {
-        this.nume = nume;
-        this.prenume = prenume;
-        this.varsta = varsta;
-    }
+
 }

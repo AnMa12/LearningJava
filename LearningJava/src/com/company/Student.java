@@ -4,6 +4,18 @@ public class Student extends Persoana implements Echipa{
     private int anStudiu;
     private String numeFacultate;
 
+    public Student() {
+        super("", "", 0, "");
+        this.anStudiu = 0;
+        this.numeFacultate = "";
+    }
+
+    public Student(String nume, String prenume, int varsta, String echipa, int anStudiu, String numeFacultate) {
+        super(nume, prenume, varsta, echipa);
+        this.anStudiu = anStudiu;
+        this.numeFacultate = numeFacultate;
+    }
+
     @Override
     public void faceEchipa(Student s2) {
         if(this.anStudiu == s2.anStudiu) {
@@ -28,6 +40,27 @@ public class Student extends Persoana implements Echipa{
                         "face parte din echipa" + this.getEchipa());
     }
 
+    public int compareTo(Student student) {
+        if( this.getNume().compareTo(student.getNume()) < 0)
+            return -1;
+        else if ( this.getNume().compareTo(student.getNume()) == 0) {
+            if (this.getPrenume().compareTo(student.getPrenume()) < 0)
+                return -1;
+            else if (this.getPrenume().compareTo(student.getPrenume()) == 0) {
+                return Integer.compare(this.anStudiu, student.anStudiu);
+            } else return 1;
+        }
+        else return 1;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "anStudiu=" + anStudiu +
+                ", numeFacultate='" + numeFacultate + '\'' +
+                '}';
+    }
+
     public void setAnStudiu(int anStudiu) {
         this.anStudiu = anStudiu;
     }
@@ -42,37 +75,5 @@ public class Student extends Persoana implements Echipa{
 
     public String getNumeFacultate() {
         return numeFacultate;
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "anStudiu=" + anStudiu +
-                ", numeFacultate='" + numeFacultate + '\'' +
-                '}';
-    }
-
-    public int compareTo(Student student) {
-        if( this.getNume().compareTo(student.getNume()) < 0)
-            return -1;
-        else if ( this.getNume().compareTo(student.getNume()) == 0) {
-            if (this.getPrenume().compareTo(student.getPrenume()) < 0)
-                return -1;
-            else if (this.getPrenume().compareTo(student.getPrenume()) == 0) {
-                return Integer.compare(this.anStudiu, student.anStudiu);
-            } else return 1;
-        }
-        else return 1;
-    }
-
-    public Student() {
-        this.anStudiu = 0;
-        this.numeFacultate = "";
-    }
-
-    public Student(String nume, String prenume, int varsta, int anStudiu, String numeFacultate) {
-        super(nume, prenume, varsta);
-        this.anStudiu = anStudiu;
-        this.numeFacultate = numeFacultate;
     }
 }
