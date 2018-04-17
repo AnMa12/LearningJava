@@ -9,11 +9,11 @@ public interface Echipa {
 
     }
 
-    public default void setEchipa() {
+    public default void setEchipa(String numeEchipa) {
 
     }
 
-    public default void getEchipa() {
+    public default String getEchipa() {
 
     }
 }

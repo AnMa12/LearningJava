@@ -1,8 +1,32 @@
 package com.company;
 
-public class Student extends Persoana {
+public class Student extends Persoana implements Echipa{
     private int anStudiu;
     private String numeFacultate;
+
+    @Override
+    public void faceEchipa(Student s2) {
+        if(this.anStudiu == s2.anStudiu) {
+            if(!this.getEchipa().equals("")) //daca s1 are echipa
+                s2.setEchipa(this.getEchipa());
+            else if(this.getEchipa().equals("") && !s2.getEchipa().equals(""))
+                this.setEchipa(s2.getEchipa());
+            else if(this.getEchipa().equals("") && s2.getEchipa().equals("")) {
+                String numeEchipa = "echipa_" + this.getNume() + "_" + s2.getNume();
+                this.setEchipa(numeEchipa);
+                s2.setEchipa(numeEchipa);
+            }
+        } else System.out.println("Cei doi studenti nu sunt in acelasi an de studiu");
+    }
+
+    @Override
+    public void detaliiEchipa() {
+        if(!this.getEchipa().equals(""))
+            System.out.println(this.getPrenume() + this.getNume() + "nu are echipa");
+        else
+            System.out.println(this.getPrenume() + this.getNume() +
+                        "face parte din echipa" + this.getEchipa());
+    }
 
     public void setAnStudiu(int anStudiu) {
         this.anStudiu = anStudiu;

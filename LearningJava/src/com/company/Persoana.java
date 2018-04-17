@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Persoana {
+public class Persoana implements Echipa {
 
     private String nume;
     private String prenume;
@@ -79,6 +79,26 @@ public class Persoana {
         persoane.add(ArrayStudenti);
         persoane.add(ArrayProfesori);
         System.out.println(persoane.toString());
+    }
+
+    @Override
+    public void faceEchipa() {
+        System.out.println("O persona nu poate face echipa cu alta persoana");
+    }
+
+    @Override
+    public void detaliiEchipa() {
+        System.out.println("O persoana nu are echipe");
+    }
+
+    @Override
+    public void setEchipa(String numeEchipa) {
+        this.echipa = numeEchipa;
+    }
+
+    @Override
+    public String getEchipa() {
+        return echipa;
     }
 
     public boolean equals (Persoana p1, Persoana p2) {

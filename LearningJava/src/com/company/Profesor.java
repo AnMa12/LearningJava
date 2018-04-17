@@ -1,9 +1,30 @@
 package com.company;
 
-public class Profesor extends Persoana {
+public class Profesor extends Persoana implements Echipa{
     Titlu titlu;
     int vechime;
     String catedra;
+
+    @Override
+    public void faceEchipa(Profesor p2) {
+        if(this.getCatedra().equals(p2.getCatedra())) {
+            if(!this.getEchipa().equals(""))
+                p2.setEchipa(this.getEchipa());
+            else if(this.getEchipa().equals("") && !p2.getEchipa().equals(""))
+                this.setEchipa(p2.getEchipa());
+            else System.out.println("Nu se poate aloca o materie de predat pentru profesori");
+        }
+        else System.out.println("Profesorii nu pot face echipa, nu sunt din aceeasi catedra");
+    }
+
+    @Override
+    public void detaliiEchipa() {
+        if(this.getEchipa().equals(""))
+            System.out.println("Profesroul " + this.getNume() + " " +
+                    this.getPrenume() + " nu are echipa");
+        else System.out.println("Profesroul " + this.getNume() + " " +
+                this.getPrenume() + " preda materia " + this.getEchipa());
+    }
 
     @Override
     public String toString() {
