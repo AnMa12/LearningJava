@@ -30,6 +30,17 @@ public class CarteMain {
             arrayCarti[i] = c;
         }
 
+
+
+        if(note.size()==0)
+            return 0;
+        return suma/note.size();
+
+        tmt = (PreparedStatement) connection.prepareStatement("INSERT INTO comentarii Values (?,?,?);");
+        stmt.setString(1, id_elev); stmt.setString(2, id_profesor);
+        stmt.setString(3, comment); stmt.executeUpdate();
+
+
         for(int j=0; j<n; j++){
             System.out.println(arrayCarti[j].toString());
         }
