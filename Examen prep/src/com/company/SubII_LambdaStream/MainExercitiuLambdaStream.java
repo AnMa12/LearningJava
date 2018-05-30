@@ -3,31 +3,55 @@ package com.company.SubII_LambdaStream;
 
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.groupingBy;
 
 public class MainExercitiuLambdaStream {
 
     public static void main (String[] args) {
-        Automobil a1 = new Automobil("A1","a1",
-                2400,6000);
-        Automobil a2 = new Automobil("A1","a2",
-                2900,2000);
-        Automobil a3 = new Automobil("A3","a3",
-                1500,5500);
+        LinkedList<Automobil> la = new LinkedList<>();
 
-        ArrayList<Automobil> listaAutomobile= new ArrayList();
-        listaAutomobile.add(a1);
-        listaAutomobile.add(a2);
-        listaAutomobile.add(a3);
+        la.add(new Automobil("BMW", "X5", 2000.5, 5000));
+        la.add(new Automobil("Mercedes", "E Class", 3500, 6000));
+        la.add(new Automobil("BMW", "X6", 2800.75, 4500));
+        la.add(new Automobil("BMW", "X1", 1600.5, 5000));
+        la.add(new Automobil("Mercedes", "S Class", 2200.25, 15000));
+        la.add(new Automobil("Audi", "A6", 2000.5, 4000));
 
-        //afișați automobilele care costă cel puțin 5000€,
-        //în ordinea descrescătoare a prețurilor;
-        listaAutomobile.stream().filter(p -> p.getPret() >= 5000)
-                .forEach( p -> System.out.println(p.toString()));
+        System.out.println("*****");
+        la.stream().forEach(System.out::println);
 
+        System.out.println("**a**");
+        la.stream().filter(a -> a.getPret() >= 5000)
+                   .sorted(Comparator.comparing(Automobil::getPret)
+                   .reversed())
+                   .forEach(System.out::println);
+
+        System.out.println("**b**");
+        la.stream().map(Automobil::getMarca)
+                   .distinct()
+                   .forEach(System.out::println);
+
+        System.out.println("**c**");
+        List<Automobil> ln = la.stream().filter(a -> a.getCapacitate() >= 2000 && a.getCapacitate() <= 3000)
+                                        .collect(Collectors.toList());
+
+        System.out.println("*****");
+        ln.stream().forEach(System.out::println);
+
+        System.out.println("**d**");
+        la.stream().collect(groupingBy(Automobil::getMarca))
+                   .forEach((m,lm) -> {
+                            System.out.print(m + ": ");
+                            lm.stream().map(Automobil::getModel)
+                                       .forEach(x -> System.out.print(x + ", "));
+                            System.out.println();
+                   });
 
 
     }
-
-
-
 }

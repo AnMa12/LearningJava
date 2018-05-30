@@ -6,8 +6,12 @@ class Automobil {
 
     private String marca;
     private String model;
-    private int capacitate;
+    private double capacitate;
     private int pret;
+
+    public boolean compareTo(int pret) {
+        return this.pret > pret;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -36,7 +40,7 @@ class Automobil {
                 '}';
     }
 
-    public Automobil(String marca, String model, int capacitate, int pret) {
+    public Automobil(String marca, String model, double capacitate, int pret) {
         this.marca = marca;
         this.model = model;
         this.capacitate = capacitate;
@@ -59,11 +63,11 @@ class Automobil {
         this.model = model;
     }
 
-    public int getCapacitate() {
+    public double getCapacitate() {
         return capacitate;
     }
 
-    public void setCapacitate(int capacitate) {
+    public void setCapacitate(double capacitate) {
         this.capacitate = capacitate;
     }
 
