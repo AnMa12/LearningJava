@@ -30,6 +30,7 @@ public class MainExercitiuThreaduri {
         t2.start();
         t3.start();
 
+        //???ceva
         try {
             t1.join();
             t2.join();
@@ -38,6 +39,7 @@ public class MainExercitiuThreaduri {
             e.printStackTrace();
         }
 
+        //facem suma finala
         int sumOcc = o1.getNrOcc() + o2.getNrOcc() + o3.getNrOcc();
         System.out.println("Numar total de aparitii: " + sumOcc);
 

@@ -24,6 +24,7 @@ public class Occurrences implements Runnable {
             Scanner iterator = new Scanner(new File(textPath));
             String line;
 
+            //vedem de cate ori apare
             while ((line = iterator.nextLine()) != null) {
                 for (String element : line.split(" ")) {
                     if (element.equalsIgnoreCase(word)) {

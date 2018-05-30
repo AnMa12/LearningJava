@@ -1,16 +1,23 @@
-package com.company.SubII;
+package com.company.SubII_LambdaStream;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
 class Automobil {
+
+    private String marca;
+    private String model;
+    private int capacitate;
+    private int pret;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Automobil)) return false;
         Automobil automobil = (Automobil) o;
-        return Objects.equals(marca, automobil.marca);
+        return capacitate == automobil.capacitate &&
+                pret == automobil.pret &&
+                Objects.equals(marca, automobil.marca) &&
+                Objects.equals(model, automobil.model);
     }
 
     @Override
@@ -66,40 +73,5 @@ class Automobil {
 
     public void setPret(int pret) {
         this.pret = pret;
-    }
-
-    String marca;
-    String model;
-    int capacitate;
-    int pret;
-}
-
-public class Main {
-
-    public static void main(String [] args) {
-        Automobil a1 = new Automobil("A1","a1",
-                2400,6000);
-        Automobil a2 = new Automobil("A1","a2",
-                2900,2000);
-        Automobil a3 = new Automobil("A3","a3",
-                1500,5500);
-
-        ArrayList<Automobil> listaAutomobile= new ArrayList();
-        listaAutomobile.add(a1);
-        listaAutomobile.add(a2);
-        listaAutomobile.add(a3);
-
-        listaAutomobile.stream()
-                .filter(p -> p.getPret() >= 5000)
-                .forEach(p -> System.out.println(p.toString()));
-
-        listaAutomobile.stream().filter(p -> p.getCapacitate() < 3000
-                && p.getCapacitate() > 2000)
-                .forEach(p -> System.out.println(p.toString()));
-
-        System.out.println("b)");
-        listaAutomobile.stream()
-                .distinct()
-                .forEach(p -> System.out.println(p.toString()));
     }
 }
