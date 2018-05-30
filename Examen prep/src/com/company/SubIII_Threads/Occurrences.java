@@ -1,17 +1,21 @@
-package com.company.ExercitiuThreaduri;
+package com.company.SubIII_Threads;
 
 import java.io.File;
 import java.util.Scanner;
 
 public class Occurrences implements Runnable {
 
-    static int nrOcc;
+    int nrOcc;
     String textPath;
     String word;
 
     public Occurrences(String textPath, String word) {
         this.textPath = textPath;
         this.word = word;
+    }
+
+    public int getNrOcc() {
+        return nrOcc;
     }
 
     public void run() {
@@ -24,8 +28,6 @@ public class Occurrences implements Runnable {
                 for (String element : line.split(" ")) {
                     if (element.equalsIgnoreCase(word)) {
                         nrOcc = nrOcc + 1;
-                        System.out.println(nrOcc);
-                        System.out.println("yes" + this.textPath);
                     }
                 }
             }
