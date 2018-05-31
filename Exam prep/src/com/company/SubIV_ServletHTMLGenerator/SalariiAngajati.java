@@ -53,36 +53,30 @@ public class SalariiAngajati extends HttpServlet
             PreparedStatement pst = null;
             ResultSet rs = null;
 
-            try
-            {
+            /*stmt = conn.createStatement();
+            String sql = "SELECT nume, prenume FROM elev WHERE ID_ELEV =" + ID_ELEV;
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next()) {
+                searchedName = searchedName + rs.getString("nume") + " " +
+                        rs.getString("prenume");
+            }
+            rs.close();*/
+
                 pst = conn.prepareStatement("SELECT * FROM Angajati WHERE Salariu > ?");
                 pst.setFloat(1 , min);
 
                 rs = pst.executeQuery();
 
                 while(rs.next())
-                    out.println("<h1>" + rs.getString("Nume") + " " + rs.getFloat("Salariu") + " " + rs.getInt("Varsta"));
-
-            } catch (SQLException ex)
-            {
-
-            }
-            finally
-            {
-
-                try {
-                    if(rs != null)
-                        rs.close();
-                    if(pst != null)
-                        pst.close();
-                } catch (SQLException ex) {
-
-                }
-
-            }
+                    out.println("<h1>" + rs.getString("Nume") +
+                            " " + rs.getFloat("Salariu") + " " +
+                            rs.getInt("Varsta"));
 
             out.println("</body>");
             out.println("</html>");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
