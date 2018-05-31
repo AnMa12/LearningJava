@@ -26,6 +26,33 @@ public class MainExercitiuLambdaStream {
         la.stream().forEach(System.out::println);
 
         System.out.println("**a**");
+        la.stream().filter(p -> p.getPret() >= 5000)
+                .sorted(Comparator.comparing(Automobil::getPret).reversed())
+                .forEach(p -> System.out.println(p.toString()));
+
+        System.out.println("**b**");
+        la.stream().map(Automobil::getMarca)
+                   .distinct()
+                   .forEach(p -> System.out.println(p.toString()));
+
+        System.out.println("**c**");
+        List<Automobil> al2 = la.stream()
+                .filter( p -> p.getCapacitate() >2000 && p.getCapacitate() < 3000)
+                .collect(Collectors.toList());
+
+        System.out.println("**d**");
+        la.stream().collect(groupingBy(Automobil::getMarca))
+                   .forEach((m,lm) -> {
+                    System.out.print(m + ": ");
+                    lm.stream().map(Automobil::getModel)
+                            .forEach(x -> System.out.print(x + ", "));
+                    System.out.println();
+                });
+
+
+        /*
+
+        System.out.println("**a**");
         la.stream().filter(a -> a.getPret() >= 5000)
                    .sorted(Comparator.comparing(Automobil::getPret)
                    .reversed())
@@ -52,6 +79,6 @@ public class MainExercitiuLambdaStream {
                             System.out.println();
                    });
 
-
+        */
     }
 }
