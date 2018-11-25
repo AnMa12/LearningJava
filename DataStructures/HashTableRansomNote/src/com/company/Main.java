@@ -1,62 +1,39 @@
 package com.company;
 
 import java.io.*;
-import java.util.*;
-import java.text.*;
 import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
 import java.util.regex.*;
 
 public class Main {
 
-    public static boolean check(String[] magazine, String[] ransom) {
-        if (magazine.length < ransom.length) {
-            return false;
+    // Complete the repeatedString function below.
+    static long repeatedString(String s, long n) {
+        long aOccurancesS = 0;
+        for(int i = 0; i < s.length(); i++)
+            if(s.charAt(i) == 'a')
+                aOccurancesS++;
+        if(n % s.length() == 0) {
+            return aOccurancesS * n/s.length();
         }
-
-        Map<String, Integer> magazineMap = createMap(magazine);
-        Map<String, Integer> ransomMap = createMap(ransom);
-
-        for (Map.Entry<String, Integer> entry : ransomMap.entrySet()) {
-            String key = entry.getKey();
-            if (!magazineMap.containsKey(key)) {
-                return false;
-            } else if (magazineMap.get(key) < entry.getValue()) {
-                return false;
-            }
+        else {
+            int subSlength = (int)(n % s.length());
+            String subS = s.substring(0,subSlength);
+            long aOccurancesSub = 0;
+            for(int i = 0; i < subS.length(); i++)
+                if(subS.charAt(i) == 'a')
+                    aOccurancesSub++;
+            System.out.println("*" + aOccurancesS + " " + n/s.length() + " " + aOccurancesSub + "**");
+            return aOccurancesS * (n/s.length()) + aOccurancesSub;
         }
-        return true;
-    }
-
-    static Map<String, Integer> createMap(String[] arr) {
-        Map<String, Integer> map = new HashMap<>();
-
-        for(String str : arr) {
-            if (map.containsKey(str)) {
-                map.put(str, map.get(str) + 1);
-            } else {
-                map.put(str, 1);
-            }
-        }
-        return map;
     }
 
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        int m = in.nextInt();
-        int n = in.nextInt();
-        String magazine[] = new String[m];
-        for(int magazine_i=0; magazine_i < m; magazine_i++){
-            magazine[magazine_i] = in.next();
-        }
-        String ransom[] = new String[n];
-        for(int ransom_i=0; ransom_i < n; ransom_i++){
-            ransom[ransom_i] = in.next();
-        }
-        boolean check = check(magazine, ransom);
-        if (check) {
-            System.out.print("Yes");
-        } else {
-            System.out.print("No");
-        }
+        System.out.println(repeatedString("aaaaaa",14));
+
+
     }
 }
